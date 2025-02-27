@@ -1,0 +1,81 @@
+#ifndef PRAWOJAZDY_H
+#define PRAWOJAZDY_H
+
+#include <iostream>
+#include <string>
+
+class PrawoJazdy {
+private:
+    std::string imie;
+    std::string nazwisko;
+    int wiek;
+    std::string miasto;
+
+public:
+    PrawoJazdy(std::string im, std::string naz, int w, std::string m); // Konstruktor
+
+    void sprawdzPrawoJazdy();  // Metoda sprawdzająca prawo jazdy
+    void wyswietlInformacje(); // Metoda wywołująca sprawdzPrawoJazdy
+};
+
+#endif
+
+________________________________
+
+CPP 
+
+#include "PrawoJazdy.h"
+
+PrawoJazdy::PrawoJazdy(std::string im, std::string naz, int w, std::string m) {
+    imie = im;
+    nazwisko = naz;
+    wiek = w;
+    miasto = m;
+}
+
+void PrawoJazdy::sprawdzPrawoJazdy() {
+    if (wiek >= 18) {
+        std::cout << imie << ", posiadasz prawo jazdy. Możesz prowadzić pojazdy." << std::endl;
+    } else {
+        std::cout << imie << ", nie zdałeś. Musisz przejść kurs i zdać egzamin na prawo jazdy." << std::endl;
+    }
+}
+
+void PrawoJazdy::wyswietlInformacje() {
+    sprawdzPrawoJazdy();
+}
+
+
+
+________________________________________________
+
+Main cpp 
+
+
+#include <iostream>
+#include "PrawoJazdy.h"
+
+int main() {
+    std::string imie, nazwisko, miasto;
+    int wiek;
+
+    std::cout << "Podaj imię: ";
+    std::cin >> imie;
+    
+    std::cout << "Podaj nazwisko: ";
+    std::cin >> nazwisko;
+    
+    std::cout << "Podaj wiek: ";
+    std::cin >> wiek;
+    
+    std::cout << "Podaj miasto: ";
+    std::cin >> miasto;
+
+    PrawoJazdy osoba(imie, nazwisko, wiek, miasto);
+    osoba.wyswietlInformacje();
+
+    return 0;
+}
+
+
+__________________________________
